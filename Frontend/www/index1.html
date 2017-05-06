@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+
+    <!-- jQuery JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+    <!--Bootsrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script	type="text/javascript" src="assets/js/main.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+
+
+</head>
+<body style="background-color: #fffff5;">
+
+<div class="navbar navbar-fixed-top top-panel">
+    <div class="site-icon">
+        <div class="site-icon-before">
+        </div>
+        <a class="pizza-logo" style="text-decoration: none;" href="/index.html">
+            <div id="pizza-title2" class="title">
+                Pizza
+            </div>
+            <div class="title" style=" padding-left: 3px">
+                KMA
+            </div>
+        </a>
+    </div>
+
+    <div class="discount-icon">
+        <div class="discount-icon-before"></div>
+        <div class="title2">
+            Цього тижня<br> на все
+        </div>
+        <div class="title">
+            -20%
+        </div>
+    </div>
+
+    <div class="header-top-row">
+        <div class="main-header-top-items">
+            <div class="main-header-top-item phone-number visible-xs-inline-block visible-sm-inline-block visible-lg-inline-block visible-md-inline-block">
+                (044) 222 5 222
+            </div>
+            <div class="main-header-top-item work-days visible-lg-inline-block visible-md-inline-block">
+                24 години/ 7 днів на тиждень
+            </div>
+            <div class="main-header-top-item delivery visible-lg-inline-block">
+                Безкоштовна доставка піци
+            </div>
+            <div type="button" class="main-header-top-item btn btn-warning sign-in-button">
+                Ввійти
+            </div>
+        </div>
+    </div>
+
+    <div class="header-down-row">
+        <span class=" pizza-page" style="color:white;">
+            <a href="/index.html" style="color:white;" class="hidden-xs">Піца</a> &nbsp;
+        </span>
+    </div>
+</div>
+
+<div class="right-panel">
+    <div class="buy">
+        <div class="r1">
+            <span class="zamovlennya">Замовлення</span>
+            <span class="badge">0</span>
+            <span class="clear">Очистити замовлення</span>
+
+        </div>
+    </div>
+    <div class="down" id="cart">
+        <div class="down_text">
+            <div class="none">Пусто в холодильнику?</div>
+            <div class="none1">Замовте піцу!</div>
+        </div>
+    </div>
+    <div class="order-state">
+        <span class="sum-title" style="display: none;">Сума замовлення</span>
+        <span class="sum-number" style="display: none;"></span>
+        <div class="do-order-button">
+            <button type="button" class="btn btn-warning btn-lg btn-block button-order">Замовити</button>
+        </div>
+    </div>
+</div>
+
+<div class="container2">
+    <div class="row order-page-panel">
+        <div class="left-panel">
+            <div class="contacts1">
+                <div class="form-description-1">
+                    1. Контактні дані
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <form class="form-horizontal">
+                            <div class="form-group name-group">
+                                <label class="col-sm-2 control-label">Ім’я</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="Name" placeholder="Ім’я">
+                                </div>
+                            </div>
+                            <div class="form-group phone-group">
+                                <label class="col-sm-2 control-label">Телефон</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="Phone" placeholder="+380994010999">
+                                </div>
+                            </div>
+                            <div class="form-group address-group">
+                                <label class="col-sm-2 control-label">Адреса</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" id="Adress" placeholder="Київ, вул. Спаська, 2">
+                                </div>
+                                <span class="address-help-block" style="display:none">
+                                Введіть адресу доставки піци
+                            </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5 order-summary">
+                        <div class=" bs-callout bs-callout-warning">
+                            <h4>Інформація про замовлення</h4>
+                            <b>Приблизний час доставки:</b>
+                            <div id="route_duration" class="order-summery-time">
+                                невідомий
+                            </div>
+                            <b>Адреса доставки:</b>
+                            <p id="route_address" class="order-summery-adress">
+                                 невідома
+                            </p>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="form-group next-step-wrap">
+                        <div class="next-step-width col-md-5">
+                            <button type="button" class="btn btn-warning btn-block next-step-button">
+                                Далі
+                                <i class="glyphicon glyphicon-chevron-right icon-white">
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    <div id="map" class="google-map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var Markers = [];
+    function initMap() {
+        var uluru = {lat: 50.464380, lng: 30.519252};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            icon: 'assets/images/map-icon.png'
+        });
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+
+        var geocoder = new google.maps.Geocoder();
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            clearOverlays();
+            Markers.push(marker);
+            placeMarker(event.latLng);
+            calculateAndDisplayRoute(event.latLng, directionsDisplay, directionsService, map);
+            geocoder.geocode({
+                'latLng': event.latLng
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        $('#Adress').val(results[0].formatted_address);
+//                        alert(results[0].formatted_address);
+                    }
+                }
+            });
+        });
+
+        function clearOverlays() {
+            for (var i = 0; i < Markers.length; i++ ) {
+                Markers[i].setMap(null);
+            }
+            Markers.length = 0;
+        }
+
+        function placeMarker(location) {
+            var HomeMarker = new google.maps.Marker({
+                position: location,
+                map: map,
+                icon: 'assets/images/home-icon.png'
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                icon: 'assets/images/map-icon.png'
+            });
+            Markers.push(HomeMarker, marker);
+        }
+
+        function calculateAndDisplayRoute(destination, directionsDisplay, directionsService, map) {
+            // Retrieve the start and end locations and create a DirectionsRequest using
+            // WALKING directions.
+            directionsService.route({
+                origin: {lat: 50.464380, lng: 30.519252},
+                destination: destination,
+                travelMode: 'DRIVING'
+            }, function(response, status) {
+                console.log(response);
+                $('#route_duration').text(response.routes[0].legs[0].duration.text);
+                $('#route_address').text(response.routes[0].legs[0].end_address);
+                console.log(response);
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+        $('#Adress').on('change', function () {
+            calculateAndDisplayRoute( $(this).val(),directionsDisplay, directionsService, map)
+        });
+
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaUEm5vX7S-2z-D40piXRJ_EcaQIa_Yl4&callback=initMap">
+</script>
+
+<div class="wrap col-xs-9">
+    <div class="container">
+        <footer class="footer">
+            <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+            <p>
+                Доставка піци не здійснюється
+            </p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

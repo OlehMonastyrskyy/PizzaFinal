@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+
+    <!-- jQuery JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+    <!--Bootsrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script	type="text/javascript" src="assets/js/main.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+
+
+</head>
+<body style="background-color: #fffff5;">
+<div class="right-panel">
+    <div class="buy">
+        <div class="r1">
+            <span class="zamovlennya">Замовлення</span>
+            <span class="badge">0</span>
+            <span class="clear">Очистити замовлення</span>
+
+        </div>
+    </div>
+    <div class="down" id="cart">
+        <div class="down_text">
+            <div class="none">Пусто в холодильнику?</div>
+            <div class="none1">Замовте піцу!</div>
+        </div>
+    </div>
+    <div class="order-state">
+        <span class="sum-title" style="display: none;">Сума замовлення</span>
+        <span class="sum-number" style="display: none;"></span>
+        <div class="do-order-button">
+            <a href="index1.html" button type="button" class="btn btn-warning btn-lg btn-block button-order">Замовити</a></button>
+        </div>
+    </div>
+</div>
+
+<div class="wrap col-xs-9">
+    <div class="container">
+        <div class="row" id="pizza_filters"></div>
+        <div class="row" id="pizza_list"></div>
+        <footer class="footer">
+            <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+            <p>
+                Доставка піци не здійснюється
+            </p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
